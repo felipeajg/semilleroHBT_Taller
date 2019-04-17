@@ -9,6 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.hbt.semillero.dto.BebidaDTO;
 import com.hbt.semillero.dto.ClienteDTO;
 import com.hbt.semillero.dto.DetalleFacturaDTO;
 import com.hbt.semillero.dto.FacturaDTO;
@@ -222,5 +223,24 @@ public class ConsultasRest {
 		return consultaEJB.consultarDetallePorFactura(idFactura);
 	}
 	
+	/************************************************************/
+	
+	/**
+	 * Metodo get para consultar los platos
+	 * @return lista de platos
+	 */
+	@GET
+	@Path("/consultarBebidas")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<BebidaDTO> consultarBebidas() {
+		return consultaEJB.consultarBebidas();
+	}
+	
+	@POST
+	@Path("/crearPedido")
+	@Produces(MediaType.APPLICATION_JSON)
+	public void crarPedido() {
+		
+	}
 	
 }

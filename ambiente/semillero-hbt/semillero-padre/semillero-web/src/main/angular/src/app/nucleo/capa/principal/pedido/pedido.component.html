@@ -1,0 +1,48 @@
+<div>
+    <h1> Tomar pedido</h1>
+    <div>
+        <label for="">Cliente: </label>
+        <select name="cliente" id="cliente" (change)="listarClientes()">
+            <option *ngFor="let cliente of listarClientesDTO" value="{{cliente.idCliente}}">{{cliente.nombre}}</option>
+        </select>
+    </div>
+    <div>
+        <h5> Platos y bebidas del día</h5>
+        <label> Platos: </label>
+        <select name="plato" id="plato" [ (change)="listarPlatos()">
+            <option *ngFor="let plato of listaPlatosDTO" value="{{plato.idPlato}}">{{plato.nombre}}</option>
+        </select>
+        <label>  Bebidas: </label>
+        <select name="bebida" id="bebida" (change)="listarBebidas()">
+            <option *ngFor="let bebida of listaBebidasDTO" value="{{bebida.idBebida}}">{{bebida.nombre}}</option>
+        </select>
+    </div>
+    <div>
+        <input type="button" value="agregar" (click)="crearDetalle()" (click)="consultarDetalleFactura()">
+    </div>
+
+    <div>
+        <table style="width: 40%;border-collapse: collapse;" border="1" cellpadding="2">
+            <tbody>
+                <tr>
+                    <td> Factura N°</td>
+                    <td> Plato </td>
+                    <td> Bebida</td>
+                    <td> Precio</td>
+                </tr>
+                <tr *ngFor="let detalle of listarDetalleDTO">
+                    <td> {{detalle.idFactura}} </td>
+                    <td> {{detalle.idPlato}} </td>
+                    <td> {{detalle.idBebida}}</td>
+                    <td> {{detalle.precioUnitario}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <input type="submit" value="tomar pedido">
+    </div>
+
+</div>

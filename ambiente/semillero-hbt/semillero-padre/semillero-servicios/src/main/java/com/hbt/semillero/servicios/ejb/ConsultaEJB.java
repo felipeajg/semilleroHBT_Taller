@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.hbt.semillero.dto.BebidaDTO;
 import com.hbt.semillero.dto.ClienteDTO;
 import com.hbt.semillero.dto.DetalleFacturaDTO;
 import com.hbt.semillero.dto.FacturaDTO;
@@ -216,6 +217,35 @@ public class ConsultaEJB implements IConsultasEjbLocal {
 			detallesRetorno.add(detalleDTO);
 		}
 		return detallesRetorno;
+	}
+	
+	/*****************************BEBIDAS***********************************/
+	
+	/**
+	 * Metodo que consulta los platos de la bd
+	 */
+	@Override
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public List<BebidaDTO> consultarBebidas() {
+		List<Bebida> bebidas = entity.createQuery("Select b from Bebida b ").getResultList();
+		List<BebidaDTO> bebidasRetorno = new ArrayList<>();
+		for (Bebida bebida : bebidas) {
+			BebidaDTO bebidaDTO = new BebidaDTO();
+			bebidaDTO.setNombre(bebida.getNombre());
+			bebidaDTO.setPrecio(bebida.getPrecio());
+			bebidasRetorno.add(bebidaDTO);
+		}
+		return bebidasRetorno;
+
+	}
+	
+	/**
+	 * firma del metodo crear pedido
+	 */
+	@Override
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public void crarPedido() {
+		
 	}
 
 }

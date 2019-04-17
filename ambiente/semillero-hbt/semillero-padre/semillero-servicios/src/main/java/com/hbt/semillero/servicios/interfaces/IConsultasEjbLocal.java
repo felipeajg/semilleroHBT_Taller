@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import com.hbt.semillero.dto.BebidaDTO;
 import com.hbt.semillero.dto.ClienteDTO;
 import com.hbt.semillero.dto.DetalleFacturaDTO;
 import com.hbt.semillero.dto.FacturaDTO;
@@ -74,5 +75,18 @@ public interface IConsultasEjbLocal {
 	 * @return
 	 */
 	public List<DetalleFacturaDTO> consultarDetallePorFactura(Long idFactura);
+	
+	/**
+	 * Metodo para consultar bebidas
+	 * @return
+	 */
+	public List<BebidaDTO> consultarBebidas();
+
+	/**
+	 * firma del metodo crear pedido
+	 */
+	public void crarPedido();
+	
+	
 
 }
